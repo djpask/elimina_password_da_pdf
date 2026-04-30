@@ -15,6 +15,7 @@ class PDFPasswordRemover(QWidget):
 
     def initUI(self):
         self.setWindowTitle('Rimuovi Password da PDF')
+        self.setAcceptDrops(True)
 
         layout = QVBoxLayout()
 
@@ -31,10 +32,9 @@ class PDFPasswordRemover(QWidget):
         self.remove_button.clicked.connect(self.remove_password)
         layout.addWidget(self.remove_button)
 
-        self.drop_area = QPlainTextEdit('Trascina qui il PDF protetto da password')
-        self.drop_area.setReadOnly(True)
-        self.drop_area.setAcceptDrops(True)
-        self.drop_area.setStyleSheet("background-color: lightgray;")
+        self.drop_area = QLabel('Trascina qui il PDF protetto da password')
+        self.drop_area.setAlignment(Qt.AlignCenter)
+        self.drop_area.setStyleSheet("background-color: lightgray; border: 2px dashed #777; padding: 30px;")
         layout.addWidget(self.drop_area)
 
         self.setLayout(layout)
